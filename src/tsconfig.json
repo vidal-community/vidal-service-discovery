@@ -1,21 +1,26 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
-    "declaration": false,
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
       "es2016",
       "dom"
     ],
-    "mapRoot": "./",
-    "module": "es2015",
+    "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "../dist/out-tsc",
+    "removeComments": true,        
+    "outDir": "../lib",
     "sourceMap": true,
     "target": "es5",
     "typeRoots": [
       "../node_modules/@types"
     ]
-  }
+  },
+  "files": [
+    "index.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

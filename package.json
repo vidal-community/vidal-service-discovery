@@ -1,15 +1,16 @@
 {
-  "name": "service-dicovery",
+  "name": "service-discovery",
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "rm -rf lib && tsc -p src"
   },
+  "types": "./lib/index.d.ts",
+  "typings": "./lib/index.d.ts",
+  "main": "./lib/index.js",
   "private": true,
   "dependencies": {
     "@angular/common": "^2.4.0",
