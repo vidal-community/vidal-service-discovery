@@ -16,7 +16,7 @@ export interface Service {
 export declare class DiscoveryService {
     private http;
     private discoveryServiceConfig;
-    constructor(http: Http, discoveryServiceConfig: DiscoveryServiceConfig);
+    constructor(http: Http, discoveryServiceConfig: any);
     private filterPath(filter);
     private serviceFilter(service, params);
     private serviceParamsInjection(service, params);

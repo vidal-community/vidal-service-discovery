@@ -39,8 +39,8 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/lib
-*.map.js
+src
 *.ngfactory.ts
-*.ngsummary.json
-index.*
+
+angular-cli.json
+karma.conf.js

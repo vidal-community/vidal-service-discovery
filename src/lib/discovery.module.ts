@@ -1,7 +1,8 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 
 import { DiscoveryService, DISCOVERY_SERVICE_CONFIG } from './discovery.service';
+// import { DiscoveryService } from './discovery.service';
 import { DiscoveryDirective } from './discovery.directive';
 
 @NgModule({
@@ -12,12 +13,14 @@ import { DiscoveryDirective } from './discovery.directive';
     exports: [DiscoveryDirective],
 })
 export class DiscoveryModule {
-    static forRoot(apiEndpoint: string): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders {
         return {
             ngModule: DiscoveryModule,
             providers: [
-                DiscoveryService,
-                { provide: DISCOVERY_SERVICE_CONFIG, useValue: { apiEndpoint } }
+                {
+                    provide: DISCOVERY_SERVICE_CONFIG,
+                    useValue: { apiEndpoint: '/api/discovery' }
+                }
             ]
         };
     }

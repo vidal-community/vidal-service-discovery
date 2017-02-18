@@ -22,7 +22,7 @@ export interface Service {
 @Injectable()
 export class DiscoveryService {
   constructor(private http: Http,
-    @Inject(DISCOVERY_SERVICE_CONFIG) private discoveryServiceConfig: DiscoveryServiceConfig
+    @Inject(DISCOVERY_SERVICE_CONFIG) private discoveryServiceConfig: any
   ) { }
 
   private filterPath(filter: string): string {

@@ -1,3 +1,3 @@
-export * from './discovery.module';
-export * from './discovery.service';
-export * from './discovery.directive';
+export {DiscoveryModule} from './lib/discovery.module';
+export {DiscoveryService, DiscoveryServiceConfig, DISCOVERY_SERVICE_CONFIG} from './lib/discovery.service';
+export {DiscoveryDirective} from './lib/discovery.directive';
