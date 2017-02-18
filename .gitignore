@@ -39,8 +39,9 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/lib
+/lib/*
 *.map.js
 *.ngfactory.ts
 *.ngsummary.json
 index.*
+service-discovery-*.tgz

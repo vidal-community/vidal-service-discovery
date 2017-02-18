@@ -44,3 +44,4 @@ src
 
 angular-cli.json
 karma.conf.js
+service-discovery-*.tgz
