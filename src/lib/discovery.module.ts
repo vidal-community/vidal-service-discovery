@@ -16,6 +16,7 @@ export class DiscoveryModule {
         return {
             ngModule: DiscoveryModule,
             providers: [
+                DiscoveryService,
                 {
                     provide: DISCOVERY_SERVICE_CONFIG,
                     useValue: { apiEndpoint}

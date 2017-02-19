@@ -1,17 +1,19 @@
 {
-  "name": "service-discovery",
+  "name": "vidal-service-discovery",
   "version": "0.0.1",
   "license": "MIT",
+  "publishConfig": {
+  "registry": "http://localhost:4873/"
+  },
   "angular-cli": {},
   "scripts": {
     "test": "ng test",
     "lint": "ng lint",
     "build": "rm -rf lib && ngc -p .",
-    "pack": "rm -rf lib service-discovery-*.tgz && ngc -p . && yarn pack"
+    "pack": "rm -rf lib service-discovery-*.tgz && ngc -p . && npm pack"
   },
   "types": "./index.d.ts",
   "main": "./index.js",
-  "private": true,
   "dependencies": {
     "@angular/common": "^2.4.7",
     "@angular/compiler": "^2.4.7",
