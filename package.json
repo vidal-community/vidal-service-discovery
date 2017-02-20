@@ -2,9 +2,6 @@
   "name": "vidal-service-discovery",
   "version": "0.0.2",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "http://localhost:4873/"
-  },
   "angular-cli": {},
   "scripts": {
     "test": "ng test",
