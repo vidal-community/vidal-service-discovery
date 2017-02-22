@@ -1,5 +1,5 @@
 {
-  "name": "vidal-service-discovery",
+  "name": "vidal-ng2-discovery",
   "version": "0.0.3",
   "license": "MIT",
   "angular-cli": {},
@@ -7,7 +7,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "build": "rm -rf lib && ngc -p .",
-    "pack": "rm -rf lib service-discovery-*.tgz && ngc -p . && npm pack"
+    "pack": "rm -rf lib vidal-*.tgz && ngc -p . && npm pack"
   },
   "types": "./index.d.ts",
   "main": "./index.js",
