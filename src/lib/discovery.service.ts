@@ -1,11 +1,11 @@
-import { Injectable, Inject, OpaqueToken } from '@angular/core';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
 import 'rxjs/Rx';
 
 
 import { Http, Headers, Response } from '@angular/http';
 
-export const DISCOVERY_SERVICE_CONFIG = new OpaqueToken('service.discovery.config');
+export const DISCOVERY_SERVICE_CONFIG = new InjectionToken<DiscoveryServiceConfig>('service.discovery.config');
 
 export interface DiscoveryServiceConfig {
   apiEndpoint: string;
@@ -78,6 +78,7 @@ export class DiscoveryService {
   }
 
   environment(): Observable<string> {
-    return this.http.get(this.filterPath('/environment')).map(r => r.text());
+    const url = this.discoveryServiceConfig.apiEndpoint.replace(/\/$/, '') + '/environment';
+    return this.http.get(url).map(r => r.text());
   }
 }
