@@ -1,9 +1,10 @@
 import { Injectable, Inject, InjectionToken } from '@angular/core';
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 import 'rxjs/Rx';
 
 
 import { Http, Headers, Response } from '@angular/http';
+import { ReplaySubject } from "rxjs/ReplaySubject";
 
 export const DISCOVERY_SERVICE_CONFIG = new InjectionToken<DiscoveryServiceConfig>('service.discovery.config');
 
@@ -21,9 +22,13 @@ export interface Service {
 
 @Injectable()
 export class DiscoveryService {
+  envUrl: string;
+  environment$: ReplaySubject<string> = new ReplaySubject(1);
   constructor(private http: Http,
     @Inject(DISCOVERY_SERVICE_CONFIG) private discoveryServiceConfig: any
-  ) { }
+  ) { 
+    this.environmentInit();
+  }
 
   private filterPath(filter: string): string {
     const url = this.discoveryServiceConfig.apiEndpoint.replace(/\/$/, '');
@@ -77,8 +82,15 @@ export class DiscoveryService {
       .mergeMap(service => this.http.get(service.url));
   }
 
-  environment(): Observable<string> {
-    const url = this.discoveryServiceConfig.apiEndpoint.replace(/\/$/, '') + '/environment';
-    return this.http.get(url).map(r => r.text());
+  environment(refresh = false): Observable<string> {
+    if (refresh) {
+      this.http.get(this.envUrl).map(r => r.text()).subscribe(env => this.environment$.next(env));
+    }
+    return this.environment$;
+  }
+
+  private environmentInit() {
+    this.envUrl = this.discoveryServiceConfig.apiEndpoint.replace(/\/$/, '') + '/environment';
+    this.http.get(this.envUrl).map(r => r.text()).subscribe(env => this.environment$.next(env));
   }
 }
