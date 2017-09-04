@@ -1,3 +1,4 @@
+
 {
   "name": "vidal-ng2-discovery",
   "version": "1.0.11",
@@ -7,7 +8,7 @@
     "test": "karma start karma.conf.js",
     "build": "rm -rf lib && ngc -p .",
     "pack": "rm -rf lib vidal-*.tgz && ngc -p . && npm pack",
-    "prepublish": "ngc -p ."
+    "prepublishOnly": "ngc -p ."
   },
   "types": "./index.d.ts",
   "main": "./index.js",
