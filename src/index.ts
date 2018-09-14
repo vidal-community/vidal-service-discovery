@@ -1,3 +1,8 @@
-export {DiscoveryModule} from './lib/discovery.module';
-export {DiscoveryService, DiscoveryServiceConfig, DISCOVERY_SERVICE_CONFIG, Service} from './lib/discovery.service';
-export {DiscoveryDirective} from './lib/discovery.directive';
+/*
+ * Public API Surface of discovery service
+ */
+
+export * from './lib/discovery.service';
+export * from './lib/discovery.directive';
+export * from './lib/discovery.module';
+
