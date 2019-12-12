@@ -8,12 +8,17 @@
   },
   "scripts": {
     "test": "ng test --watch=false",
-    "prepare-prerelease": "npm version prerelease --no-git-tag-version && npm i",
-    "prepare-release": "npm version minor && npm i",
-    "build": "ng-packagr -p ng-package.json",
-    "package": "cd dist/@vidal-community/ng2-discovery && npm pack",
-    "publish": "npm publish dist/@vidal-community/ng2-discovery/vidal-community-ng2-discovery-*.tgz",
-    "build-and-publish": "npm run build && npm run package && npm run publish"
+    "build-prerelease": "npm version prerelease --no-git-tag-version && npm i && ng-packagr -p ng-package.json",
+    "package-prerelease": "cd dist/@vidal-community/ng2-discovery && find . -type f -name 'vidal-community-ng2-discovery-*.tgz' -delete && npm pack",
+    "publish-prerelease": "npm publish dist/@vidal-community/ng2-discovery/vidal-community-ng2-discovery-*.tgz",
+    "build-and-publish-prerelease": "npm run build-prerelease && npm run package-prerelease && npm run publish-prerelease",
+    "build-release": "npm i && ng-packagr -p ng-package.json",
+    "package-release": "cd dist/@vidal-community/ng2-discovery && find . -type f -name 'vidal-community-ng2-discovery-*.tgz' -delete && npm pack",
+    "publish-release": "npm publish dist/@vidal-community/ng2-discovery/vidal-community-ng2-discovery-*.tgz",
+    "build-and-publish-release": "npm run build-release && npm run package-release && npm run publish-release",
+    "publish-major": "npm version major && npm run build-and-publish-release",
+    "publish-minor": "npm version minor && npm run build-and-publish-release",
+    "publish-patch": "npm version patch && npm run build-and-publish-release"
   },
   "types": "./index.d.ts",
   "main": "./index.js",
