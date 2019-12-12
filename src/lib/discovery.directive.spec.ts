@@ -63,7 +63,6 @@ describe('Directive: Discovery', () => {
     const div = fixture.debugElement.nativeElement.querySelector('div');
 
     expect(div).toBeTruthy();
-    console.log(div);
 
     div.click();
     fixture.whenStable().then(() => {

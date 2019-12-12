@@ -79,13 +79,15 @@ export class DiscoveryService {
 
   environment(refresh = false): Observable<string> {
     if (refresh) {
-      this.http.get<string>(this.envUrl).subscribe(env => this.environment$.next(env));
+      this.http
+        .get(this.envUrl,{responseType: 'text'})
+        .subscribe(env => this.environment$.next(env));
     }
     return this.environment$;
   }
 
   private environmentInit() {
     this.envUrl = this.discoveryServiceConfig.apiEndpoint.replace(/\/$/, '') + '/environment';
-    this.http.get<string>(this.envUrl).subscribe(env => this.environment$.next(env));
+    this.environment(true);
   }
 }

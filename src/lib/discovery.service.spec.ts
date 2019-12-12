@@ -1,9 +1,9 @@
 /* tslint:disable:no-unused-variable */
 
-import {inject, TestBed} from '@angular/core/testing';
-import {DISCOVERY_SERVICE_CONFIG, DiscoveryService} from './discovery.service';
-import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {HttpClient} from '@angular/common/http';
+import { inject, TestBed } from '@angular/core/testing';
+import { DISCOVERY_SERVICE_CONFIG, DiscoveryService } from './discovery.service';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
 
 describe('DiscoveryService', () => {
   let httpClient: HttpClient;
@@ -57,6 +57,20 @@ describe('DiscoveryService', () => {
     const req = httpTestingController.expectOne('http://discovery/api/services/toto');
 
     req.flush(mockedServices);
+
+    httpTestingController.verify();
+  }));
+
+  it('should retrieve environment as plain text', inject([DiscoveryService], (discovery: DiscoveryService) => {
+
+    const request = httpTestingController.expectOne('http://discovery/api/environment');
+
+    expect(request.request.responseType).toEqual('text');
+
+    const mockedResponse = 'my-prod';
+    request.flush(mockedResponse);
+
+    discovery.environment$.subscribe(env => expect(env).toEqual('my-prod'));
 
     httpTestingController.verify();
   }));
