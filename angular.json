@@ -43,5 +43,8 @@
       "styleext": "css"
     },
     "@schematics/angular:directive": {}
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -11,7 +11,7 @@ class TestComponent {
 }
 
 class MockDiscoveryService {
-  first(filter) {
+  first(service, params) {
   }
 }
 
@@ -35,7 +35,6 @@ describe('Directive: Discovery', () => {
     mockService.first = jasmine.createSpy('first').and.returnValue(of(true));
     fixture.detectChanges(); // initial binding
     expect(mockService.first).toHaveBeenCalledWith('toto', [1, 2]);
-
   });
 
   it('should not be visible if service is not present', () => {
