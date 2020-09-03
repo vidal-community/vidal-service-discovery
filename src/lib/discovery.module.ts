@@ -12,7 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
   exports: [DiscoveryDirective],
 })
 export class DiscoveryModule {
-  static forRoot(apiEndpoint): ModuleWithProviders {
+  static forRoot(apiEndpoint): ModuleWithProviders<DiscoveryModule> {
     return {
       ngModule: DiscoveryModule,
       providers: [
